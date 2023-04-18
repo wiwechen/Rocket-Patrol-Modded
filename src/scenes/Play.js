@@ -3,6 +3,12 @@ class Play extends Phaser.Scene{
         super("playScene");
     }
 
+    preload(){
+        this.load.image('rocket', './assets/rocket.png');
+        this.load.image('spaceship','./assets/spaceship.png');
+        this.load.image('starfield', './assets/starfield.png');
+    }
+
     create(){
         //
         //green UI background
