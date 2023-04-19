@@ -66,7 +66,7 @@ class Play extends Phaser.Scene{
        
        //Timer play clock
        scoreConfig.fixedWidth = 0;
-       this.clock = this.time.delayedCall(game.settings.Spaceship, () => {
+       this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
         this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 +64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
         this.gameOver = true;
@@ -130,9 +130,7 @@ class Play extends Phaser.Scene{
             boom.destroy();
         });
         // score add and repaint
-        console.log("points earned: ", ship.points);
         this.p1Score += ship.points;
-        console.log("p1 score is: ", this.p1Score);
         this.scoreLeft.text = this.p1Score;
         this.sound.play('sfx_explosion');
 
