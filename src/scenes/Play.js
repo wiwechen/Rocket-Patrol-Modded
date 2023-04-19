@@ -7,6 +7,8 @@ class Play extends Phaser.Scene{
         this.load.image('rocket', './assets/rocket.png');
         this.load.image('spaceship','./assets/spaceship.png');
         this.load.image('starfield', './assets/starfield.png');
+        this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+
     }
 
     create(){
@@ -33,6 +35,16 @@ class Play extends Phaser.Scene{
        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0,0);
        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0);
        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0);
+
+       //animation config
+       this.anims.create({
+        key: 'explode',
+        frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first:0}),
+        frameRate: 30
+       });
+
+       //initialize score
+       this.p1Score = 0;
     }
 
     update(){
@@ -45,26 +57,40 @@ class Play extends Phaser.Scene{
         // check collisons
         if(this.checkCollision(this.p1Rocket, this.ship03)){
             this.p1Rocket.reset();
-            this.ship03.reset();
+            this.shipExplode(this.ship03);
         }
         if(this.checkCollision(this.p1Rocket, this.ship02)){
             this.p1Rocket.reset();
-            this.ship02.reset();
+            this.shipExplode(this.ship02);
         }
         if(this.checkCollision(this.p1Rocket, this.ship01)){
             this.p1Rocket.reset();
-            this.ship01.reset();
+            this.shipExplode(this.ship01);
         }
     }
     checkCollision(rocket, ship){
         // simple AABB checking
         if (rocket.x < ship.x + ship.width &&
-            rocket.x + rocket.width < ship.x &&
+            rocket.x + rocket.width > ship.x &&
             rocket.y < ship.y + ship.height &&
             rocket.height + rocket.y > ship.y){
                 return true;
             } else {
                 return false;
             }
+    }
+
+    shipExplode(ship){
+        //temporarily hide ship
+        ship.alpha=0;
+        // create explosion sprite at ship's position
+        let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0,0);
+        boom.anims.play('explode');
+        boom.on('animationcomplete', () => {
+            ship.reset();
+            ship.alpha = 1;
+            boom.destroy();
+        });
+
     }
 }
