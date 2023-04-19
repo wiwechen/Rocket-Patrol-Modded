@@ -45,6 +45,21 @@ class Play extends Phaser.Scene{
 
        //initialize score
        this.p1Score = 0;
+
+       //display score
+       let scoreConfig = {
+        fontFamily: 'Courier',
+        fontSize: '28px',
+        backgroundColor: '#F3B141',
+        color: '#843605',
+        align: 'right',
+        padding: {
+            top: 5,
+            bottom: 5,
+        },
+        fixedWidth: 100
+       }
+       this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
     }
 
     update(){
@@ -91,6 +106,11 @@ class Play extends Phaser.Scene{
             ship.alpha = 1;
             boom.destroy();
         });
+        // score add and repaint
+        console.log("points earned: ", ship.points);
+        this.p1Score += ship.points;
+        console.log("p1 score is: ", this.p1Score);
+        this.scoreLeft.text = this.p1Score;
 
     }
 }
