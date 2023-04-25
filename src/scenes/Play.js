@@ -45,8 +45,7 @@ class Play extends Phaser.Scene{
 
        //initialize score
        this.p1Score = 0;
-
-       //display score
+       //display current score
        let scoreConfig = {
         fontFamily: 'Courier',
         fontSize: '28px',
@@ -61,6 +60,21 @@ class Play extends Phaser.Scene{
        }
        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
 
+       //Display High Score
+       let hScoreConfig = {
+        fontFamily: 'Courier',
+        fontSize: '28px',
+        backgroundColor: '#F3B141',
+        color: '#843605',
+        align: 'right',
+        padding: {
+            top: 5,
+            bottom: 5,
+        },
+        fixedWidth: 100
+       }
+       this.highScore = this.add.text(borderUISize + borderPadding + 150, borderUISize + borderPadding*2, hScore, hScoreConfig);
+
        //Display fire UI
        let fireUI = {
         fontFamily: 'Courier',
@@ -74,7 +88,7 @@ class Play extends Phaser.Scene{
         },
         fixedWidth: 100
        }
-       this.fireUI = this.add.text(borderUISize + borderPadding + 300, borderUISize + borderPadding*2, "Fire", scoreConfig);
+       this.fireUI = this.add.text(borderUISize + borderPadding + 300, borderUISize + borderPadding*2, "FIRE", scoreConfig);
        this.fireUI.visible = false;
 
        //GAME OVER flag
@@ -92,10 +106,15 @@ class Play extends Phaser.Scene{
     update(){
         //check key input for restart
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
+            if(this.p1Score>hScore){
+                hScore = this.p1Score;
+                this.highScore.text = hScore;
+            }
             this.scene.restart();
         }
 
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)){
+            hScore = 0;
             this.scene.start("menuScene");
         }
 
@@ -125,10 +144,8 @@ class Play extends Phaser.Scene{
             this.shipExplode(this.ship01);
         }
 
-        if(this.fireUICheck(this.p1Rocket)){
-            console.log("up up and away");
-
-        }
+        this.fireUICheck(this.p1Rocket);
+        
     }
     checkCollision(rocket, ship){
         // simple AABB checking
@@ -168,4 +185,5 @@ class Play extends Phaser.Scene{
         }
         
     }
+
 }
