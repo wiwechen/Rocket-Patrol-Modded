@@ -75,6 +75,7 @@ class Play extends Phaser.Scene{
         fixedWidth: 100
        }
        this.fireUI = this.add.text(borderUISize + borderPadding + 300, borderUISize + borderPadding*2, "Fire", scoreConfig);
+       this.fireUI.visible = false;
 
        //GAME OVER flag
        this.gameOver = false;
@@ -110,15 +111,23 @@ class Play extends Phaser.Scene{
         // check collisons
         if(this.checkCollision(this.p1Rocket, this.ship03)){
             this.p1Rocket.reset();
+            //this.fireUI.visible = false;
             this.shipExplode(this.ship03);
         }
         if(this.checkCollision(this.p1Rocket, this.ship02)){
             this.p1Rocket.reset();
+           // this.fireUI.visible = false;
             this.shipExplode(this.ship02);
         }
         if(this.checkCollision(this.p1Rocket, this.ship01)){
             this.p1Rocket.reset();
+            //this.fireUI.visible = false;
             this.shipExplode(this.ship01);
+        }
+
+        if(this.fireUICheck(this.p1Rocket)){
+            console.log("up up and away");
+
         }
     }
     checkCollision(rocket, ship){
@@ -149,5 +158,14 @@ class Play extends Phaser.Scene{
         this.scoreLeft.text = this.p1Score;
         this.sound.play('sfx_explosion');
 
+    }
+    //will show the fireUI if rocket is in play, and dissaper when it isn't
+    fireUICheck(rocket){
+        if(rocket.isFiring == true){
+            this.fireUI.visible = true;
+        }else{
+            this.fireUI.visible = false;
+        }
+        
     }
 }
