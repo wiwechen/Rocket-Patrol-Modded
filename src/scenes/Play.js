@@ -96,11 +96,18 @@ class Play extends Phaser.Scene{
        
        //Timer play clock
        scoreConfig.fixedWidth = 0;
+
        this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
         this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 +64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
         this.gameOver = true;
+        this.displayTimer = false;
        }, null, this);
+
+       //Timer
+       this.displayTimer = false;
+       this.remaining = this.clock.getRemainingSeconds();
+
     }
 
     update(){
@@ -125,26 +132,29 @@ class Play extends Phaser.Scene{
             this.ship01.update();
             this.ship02.update();
             this.ship03.update();
+            
         }
 
         // check collisons
         if(this.checkCollision(this.p1Rocket, this.ship03)){
             this.p1Rocket.reset();
-            //this.fireUI.visible = false;
+
             this.shipExplode(this.ship03);
         }
         if(this.checkCollision(this.p1Rocket, this.ship02)){
             this.p1Rocket.reset();
-           // this.fireUI.visible = false;
             this.shipExplode(this.ship02);
         }
         if(this.checkCollision(this.p1Rocket, this.ship01)){
             this.p1Rocket.reset();
-            //this.fireUI.visible = false;
             this.shipExplode(this.ship01);
         }
 
         this.fireUICheck(this.p1Rocket);
+        this.remaining = this.clock.getRemainingSeconds();
+        console.log("Time remaing is: "+Math.floor(this.remaining));
+        
+        
         
     }
     checkCollision(rocket, ship){
