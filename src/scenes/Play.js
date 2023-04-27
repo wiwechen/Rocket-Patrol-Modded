@@ -88,7 +88,7 @@ class Play extends Phaser.Scene{
         },
         fixedWidth: 100
        }
-       this.fireUI = this.add.text(borderUISize + borderPadding + 300, borderUISize + borderPadding*2, "FIRE", scoreConfig);
+       this.fireUI = this.add.text(borderUISize + borderPadding + 300, borderUISize + borderPadding*2, "FIRE", fireUI);
        this.fireUI.visible = false;
 
        //GAME OVER flag
@@ -104,9 +104,23 @@ class Play extends Phaser.Scene{
         this.displayTimer = false;
        }, null, this);
 
-       //Timer
+       //Timer UI
        this.displayTimer = false;
        this.remaining = this.clock.getRemainingSeconds();
+       //this.remaining = this.clock.delay;
+       let timeUI = {
+        fontFamily: 'Courier',
+        fontSize: '28px' ,
+        backgroundColor: '#F3B141',
+        color: '#843605',
+        align: 'right',
+        padding: {
+            top: 5,
+            bottom: 5,
+        },
+        fixedWidth: 100  
+       }
+       this.timeUI = this.add.text(borderUISize + borderPadding + 450, borderUISize + borderPadding*2, this.remaining, timeUI);
 
     }
 
@@ -152,7 +166,11 @@ class Play extends Phaser.Scene{
 
         this.fireUICheck(this.p1Rocket);
         this.remaining = this.clock.getRemainingSeconds();
-        console.log("Time remaing is: "+Math.floor(this.remaining));
+        
+        console.log("Time remaing is: "+Math.ceil(this.remaining));
+
+        //updateTimer
+       this.timeUI.text = Math.ceil(this.remaining);
         
         
         
