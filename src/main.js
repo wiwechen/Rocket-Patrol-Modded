@@ -12,19 +12,20 @@
  * [COMPLETE]Display time remaning (10pts)
  * [50%]Create New Title Screen(e.g new artwork, typography, layout) (10pts)
  * Implement an altering two-player mode(15pts)
- * Create new enemy Spaceship type, new art, smaller, faster, worth more points (15pts)
+ * [50%]Create new enemy Spaceship type, new art, smaller, faster, worth more points (15pts)
  * 
  * (delete later)Points Completed
  * Done:
  * 5+5+10+5
  * Working On:
- * 10
+ * 10+15+5
  * 
  * 
  * Sources:
  * Showing and hiding text for fire UI: https://stackoverflow.com/questions/29148886/show-hide-sprites-texts-in-phaser
  * Phaser3 Timer Documentation: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/timer/
  * Music by <a href="https://pixabay.com/users/penguinmusic-24940186/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=14194">penguinmusic</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=14194">Pixabay</a> 
+ * Music resource https://rexrainbow.github.io/phaser3-rex-notes/docs/site/audio/
  * 
  * 
  * 
