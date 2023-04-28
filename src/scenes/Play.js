@@ -8,6 +8,7 @@ class Play extends Phaser.Scene{
         this.load.image('spaceship','./assets/spaceship.png');
         this.load.image('starfield', './assets/starfield.png');
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        
 
     }
 
@@ -101,11 +102,12 @@ class Play extends Phaser.Scene{
         this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 +64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
         this.gameOver = true;
-        this.displayTimer = false;
+        
        }, null, this);
 
        //Timer UI
-       this.displayTimer = false;
+       this.elapsed = this.clock.getElapsedSeconds();
+       
        this.remaining = this.clock.getRemainingSeconds();
        //this.remaining = this.clock.delay;
        let timeUI = {
@@ -164,13 +166,25 @@ class Play extends Phaser.Scene{
             this.shipExplode(this.ship01);
         }
 
+
         this.fireUICheck(this.p1Rocket);
         this.remaining = this.clock.getRemainingSeconds();
+        this.elapsed = this.clock.getElapsedSeconds();
         
-        console.log("Time remaing is: "+Math.ceil(this.remaining));
 
         //updateTimer
-       this.timeUI.text = Math.ceil(this.remaining);
+        this.timeUI.text = Math.ceil(this.remaining);
+        
+
+        //Increase speed when 30 seconds have passed
+        if(Math.floor(this.elapsed)==30){
+            this.ship01.moveSpeed=(game.settings.spaceshipSpeed) + 3;
+            this.ship02.moveSpeed=(game.settings.spaceshipSpeed) + 3;
+            this.ship03.moveSpeed=(game.settings.spaceshipSpeed) + 3;
+        }
+
+       
+       
         
         
         

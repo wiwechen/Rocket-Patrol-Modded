@@ -5,9 +5,9 @@
  * Mods I Chose:
  * [COMPLETE]Track High Score(5pts)
  * [COMPLETE]Fire UI, it shows FIRE on UI when rocket is in play, Disapers when rocket at start(5pts)
- * [50%]Increase Speed for spaceship after 30 seconds(5pts)
+ * [COMPLETE]Increase Speed for spaceship after 30 seconds(5pts)
  * Create new scrolling tile sprite for the background (5pts)
- * Add copyright free background music to the Play scene(5pts)
+ * [WORKING ON IT]Add copyright free background music to the Play scene(5pts)
  * Create 4 new explosion sound effects(10pts)
  * [COMPLETE]Display time remaning (10pts)
  * [50%]Create New Title Screen(e.g new artwork, typography, layout) (10pts)
@@ -16,9 +16,9 @@
  * 
  * (delete later)Points Completed
  * Done:
- * 5+5+10
+ * 5+5+10+5
  * Working On:
- * 10+5
+ * 10
  * 
  * 
  * Sources:
