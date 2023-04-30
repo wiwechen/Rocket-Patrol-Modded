@@ -13,10 +13,13 @@
  * [50%]Create New Title Screen(e.g new artwork, typography, layout) (10pts)
  * Implement an altering two-player mode(15pts)
  * [50%]Create new enemy Spaceship type, new art, smaller, faster, worth more points (15pts)
+ * [COMPLETE]Implement a new timing/scoring mechanism that adds time to the clock for successful hits (15pts)
+ * 
+ * 
  * 
  * (delete later)Points Completed
  * Done:
- * 5+5+10+5
+ * 5+5+10+5+15
  * Working On:
  * 10+15+5
  * 

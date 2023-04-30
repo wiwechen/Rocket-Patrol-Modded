@@ -93,24 +93,36 @@ class Play extends Phaser.Scene{
        this.fireUI = this.add.text(borderUISize + borderPadding + 300, borderUISize + borderPadding*2, "FIRE", fireUI);
        this.fireUI.visible = false;
 
-       //GAME OVER flag
-       this.gameOver = false;
-       
-       //Timer play clock
+       //GAME OVER flag and text;
        scoreConfig.fixedWidth = 0;
+       this.gameOver = false;
+       this.gameOverUi = this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
+       this.restartMenuUi = this.add.text(game.config.width/2, game.config.height/2 +64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
+       this.gameOverUi.visible = false;
+       this.restartMenuUi.visible = false;
+
+       
+       //All Time related CodeTimer play clock
+       
 
        this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
-        this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 +64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
+        this.gameOverUi.visible = true;
+        this.restartMenuUi.visible = true;
         this.gameOver = true;
         
        }, null, this);
 
        //Timer UI
-       this.elapsed = this.clock.getElapsedSeconds();
-       
+       this.thirtySec = this.time.delayedCall(30000, ()=>{
+        this.ship01.moveSpeed=(game.settings.spaceshipSpeed) + 4;
+        this.ship02.moveSpeed=(game.settings.spaceshipSpeed) + 4;
+        this.ship03.moveSpeed=(game.settings.spaceshipSpeed) + 4;
+
+       })
        this.remaining = this.clock.getRemainingSeconds();
-       //this.remaining = this.clock.delay;
+
+       this.remainingDelayed = this.clock.getRemaining();
+       
        let timeUI = {
         fontFamily: 'Courier',
         fontSize: '28px' ,
@@ -152,10 +164,20 @@ class Play extends Phaser.Scene{
             
         }
 
-        // check collisons
-        if(this.checkCollision(this.p1Rocket, this.ship03)){
-            this.p1Rocket.reset();
+        //Code the fire UI
+        this.fireUICheck(this.p1Rocket);
+        this.remaining = this.clock.getRemainingSeconds();
 
+        
+
+        //updateTimer
+        this.timeUI.text = Math.ceil(this.remaining);
+        this.remainingDelayed = Math.ceil(this.clock.getRemaining());
+
+
+        // check collisons
+        if(this.checkCollision(this.p1Rocket, this.ship03)){    
+            this.p1Rocket.reset();
             this.shipExplode(this.ship03);
         }
         if(this.checkCollision(this.p1Rocket, this.ship02)){
@@ -165,28 +187,13 @@ class Play extends Phaser.Scene{
         if(this.checkCollision(this.p1Rocket, this.ship01)){
             this.p1Rocket.reset();
             this.shipExplode(this.ship01);
+            this.clock.remove();
+            this.clock = this.time.delayedCall(this.remainingDelayed+5000, () => {
+                this.gameOverUi.visible = true;
+                this.restartMenuUi.visible = true;
+                this.gameOver = true;
+            }, null, this);   
         }
-
-
-        this.fireUICheck(this.p1Rocket);
-        this.remaining = this.clock.getRemainingSeconds();
-        this.elapsed = this.clock.getElapsedSeconds();
-        
-
-        //updateTimer
-        this.timeUI.text = Math.ceil(this.remaining);
-        
-
-        //Increase speed when 30 seconds have passed
-        if(Math.floor(this.elapsed)==30){
-            this.ship01.moveSpeed=(game.settings.spaceshipSpeed) + 3;
-            this.ship02.moveSpeed=(game.settings.spaceshipSpeed) + 3;
-            this.ship03.moveSpeed=(game.settings.spaceshipSpeed) + 3;
-        }
-
-       
-       
-        
         
         
     }
