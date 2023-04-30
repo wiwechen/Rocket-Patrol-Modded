@@ -104,7 +104,7 @@ class Play extends Phaser.Scene{
        
        //All Time related CodeTimer play clock
        
-
+       //30 Second Timer Check
        this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
         this.gameOverUi.visible = true;
         this.restartMenuUi.visible = true;
@@ -119,8 +119,7 @@ class Play extends Phaser.Scene{
         this.ship03.moveSpeed=(game.settings.spaceshipSpeed) + 4;
 
        })
-       this.remaining = this.clock.getRemainingSeconds();
-
+       this.remaining = Math.ceil(this.clock.getRemainingSeconds());
        this.remainingDelayed = this.clock.getRemaining();
        
        let timeUI = {
@@ -137,6 +136,15 @@ class Play extends Phaser.Scene{
        }
        this.timeUI = this.add.text(borderUISize + borderPadding + 450, borderUISize + borderPadding*2, this.remaining, timeUI);
 
+       //play music
+       this.track = this.sound.add('music_space', {
+        mute: false,
+        volume: 1,
+        loop: true
+       });
+       this.track.play();
+
+
     }
 
     update(){
@@ -146,11 +154,13 @@ class Play extends Phaser.Scene{
                 hScore = this.p1Score;
                 this.highScore.text = hScore;
             }
+            this.track.stop();
             this.scene.restart();
         }
 
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)){
             hScore = 0;
+            this.track.stop();
             this.scene.start("menuScene");
         }
 
@@ -166,13 +176,14 @@ class Play extends Phaser.Scene{
 
         //Code the fire UI
         this.fireUICheck(this.p1Rocket);
-        this.remaining = this.clock.getRemainingSeconds();
+
 
         
 
         //updateTimer
+        this.remaining = this.clock.getRemainingSeconds();
         this.timeUI.text = Math.ceil(this.remaining);
-        this.remainingDelayed = Math.ceil(this.clock.getRemaining());
+        this.remainingDelayed = Math.ceil(this.clock.getRemaining());  //used for adding time
 
 
         // check collisons
