@@ -144,6 +144,9 @@ class Play extends Phaser.Scene{
        });
        this.track.play();
 
+       //play random track
+       this.sfx = ['bam', 'boof', 'kaboom', 'poof', 'sfx_explosion'];
+
 
     }
 
@@ -234,7 +237,8 @@ class Play extends Phaser.Scene{
         // score add and repaint
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
-        this.sound.play('sfx_explosion');
+        //this.sound.play('sfx_explosion');
+        this.sound.play(this.sfx[Math.floor(Math.random() * 5)])
 
     }
     //will show the fireUI if rocket is in play, and dissaper when it isn't
