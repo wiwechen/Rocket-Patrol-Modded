@@ -6,23 +6,24 @@
  * [COMPLETE]Track High Score(5pts)
  * [COMPLETE]Fire UI, it shows FIRE on UI when rocket is in play, Disapers when rocket at start(5pts)
  * [COMPLETE]Increase Speed for spaceship after 30 seconds(5pts)
- * Create new scrolling tile sprite for the background (5pts)
+ * [COMPLETE]Create new scrolling tile sprite for the background (5pts)
  * [COMPLETE]Add copyright free background music to the Play scene(5pts)
  * [COMPLETE]Create 4 new explosion sound effects(10pts)
  * [COMPLETE]Display time remaning (10pts)
- * [50%]Create New Title Screen(e.g new artwork, typography, layout) (10pts)
+ * [75%]Create New Title Screen(e.g new artwork, typography, layout) (10pts)
  * Implement an altering two-player mode(15pts)
- * [75%]Create new enemy Spaceship type, new art, smaller, faster, worth more points (15pts)
+ * [COMPLETE]Create new enemy Spaceship type, new art, smaller, faster, worth more points (15pts)
  * [COMPLETE]Implement a new timing/scoring mechanism that adds time to the clock for successful hits on top ship(15pts)
  * 
  * 
  * 
  * (delete later)Points Completed
  * Done:
- * 5+5+10+5+15+5+10
+ * 5+5+10+5+15+5+10+15+5
  * Working On:
- * 10+15
+ * 10
  * 
+ * Done+Working = 75 + 10 = 85
  * 
  * Sources:
  * Showing and hiding text for fire UI: https://stackoverflow.com/questions/29148886/show-hide-sprites-texts-in-phaser
