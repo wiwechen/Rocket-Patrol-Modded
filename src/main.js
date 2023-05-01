@@ -12,7 +12,7 @@
  * [COMPLETE]Display time remaning (10pts)
  * [50%]Create New Title Screen(e.g new artwork, typography, layout) (10pts)
  * Implement an altering two-player mode(15pts)
- * [50%]Create new enemy Spaceship type, new art, smaller, faster, worth more points (15pts)
+ * [75%]Create new enemy Spaceship type, new art, smaller, faster, worth more points (15pts)
  * [COMPLETE]Implement a new timing/scoring mechanism that adds time to the clock for successful hits on top ship(15pts)
  * 
  * 
@@ -29,6 +29,8 @@
  * Phaser3 Timer Documentation: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/timer/
  * Music by <a href="https://pixabay.com/users/penguinmusic-24940186/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=14194">penguinmusic</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=14194">Pixabay</a> 
  * Music resource https://rexrainbow.github.io/phaser3-rex-notes/docs/site/audio/
+ * random in javascript https://www.w3schools.com/jsref/jsref_random.asp
+ * 
  * 
  * 
  * 

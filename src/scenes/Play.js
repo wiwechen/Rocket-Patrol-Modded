@@ -37,6 +37,7 @@ class Play extends Phaser.Scene{
        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0,0);
        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0);
        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0);
+       //this.ship04 = new Spaceship(this, game.config.width + borderUISize*9, borderUISize*7 + borderPadding*6, 'spaceship', 0, 0).setOrigin(0,0);
 
        //animation config
        this.anims.create({
@@ -104,7 +105,7 @@ class Play extends Phaser.Scene{
        
        //All Time related CodeTimer play clock
        
-       //30 Second Timer Check
+       //Game Over, Time is UP
        this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
         this.gameOverUi.visible = true;
         this.restartMenuUi.visible = true;
@@ -112,7 +113,7 @@ class Play extends Phaser.Scene{
         
        }, null, this);
 
-       //Timer UI
+       //30 Second Timer Check
        this.thirtySec = this.time.delayedCall(30000, ()=>{
         this.ship01.moveSpeed=(game.settings.spaceshipSpeed) + 4;
         this.ship02.moveSpeed=(game.settings.spaceshipSpeed) + 4;
@@ -122,6 +123,7 @@ class Play extends Phaser.Scene{
        this.remaining = Math.ceil(this.clock.getRemainingSeconds());
        this.remainingDelayed = this.clock.getRemaining();
        
+       //Timer UI Code
        let timeUI = {
         fontFamily: 'Courier',
         fontSize: '28px' ,
@@ -174,6 +176,7 @@ class Play extends Phaser.Scene{
             this.ship01.update();
             this.ship02.update();
             this.ship03.update();
+            //this.ship04.update();
             
         }
 
