@@ -17,7 +17,6 @@ class Play extends Phaser.Scene{
 
     create(){
         //place tile sprite
-        //this.starfield=this.add.tileSprite(0,0,640,480,'starsBlack').setOrigin(0,0);
         if(game.settings.difficulty == 0){
             this.starfield=this.add.tileSprite(0,0,640,480,'starsWhite').setOrigin(0,0);
         }else{
@@ -59,7 +58,7 @@ class Play extends Phaser.Scene{
        let scoreConfig = {
         fontFamily: 'Courier',
         fontSize: '28px',
-        backgroundColor: '#F3B141',
+        backgroundColor: '#E211A0',
         color: '#843605',
         align: 'right',
         padding: {
@@ -74,7 +73,7 @@ class Play extends Phaser.Scene{
        let hScoreConfig = {
         fontFamily: 'Courier',
         fontSize: '28px',
-        backgroundColor: '#F3B141',
+        backgroundColor: '#E211A0',
         color: '#843605',
         align: 'right',
         padding: {
@@ -89,7 +88,7 @@ class Play extends Phaser.Scene{
        let fireUI = {
         fontFamily: 'Courier',
         fontSize: '28px',
-        backgroundColor: '#F3B141',
+        backgroundColor: '#E211A0',
         color: '#843605',
         align: 'right',
         padding: {
@@ -125,8 +124,9 @@ class Play extends Phaser.Scene{
         this.ship01.moveSpeed=(game.settings.spaceshipSpeed) + 4;
         this.ship02.moveSpeed=(game.settings.spaceshipSpeed) + 4;
         this.ship03.moveSpeed=(game.settings.spaceshipSpeed) + 4;
+        this.magenta01.moveSpeed=(game.settings.spaceshipSpeed) + 7;
 
-       })
+       });
        this.remaining = Math.ceil(this.clock.getRemainingSeconds());
        this.remainingDelayed = this.clock.getRemaining();
        
@@ -134,7 +134,7 @@ class Play extends Phaser.Scene{
        let timeUI = {
         fontFamily: 'Courier',
         fontSize: '28px' ,
-        backgroundColor: '#F3B141',
+        backgroundColor: '#E211A0',
         color: '#843605',
         align: 'right',
         padding: {

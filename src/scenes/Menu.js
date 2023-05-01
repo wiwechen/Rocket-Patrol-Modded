@@ -13,7 +13,7 @@ class Menu extends Phaser.Scene {
       this.load.audio('boof', './assets/boof.wav');
       this.load.audio('kaboom', './assets/kaboom.wav');
       this.load.audio('poof', './assets/poof.wav');
-      this.load.image('starsFull', './assets/starsFull.png')
+      this.load.image('starsFull', './assets/starsFull.png');
     }
 
     create() {
@@ -36,19 +36,21 @@ class Menu extends Phaser.Scene {
        // show menu text
        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 100, 
        'ROCKET PATROL', menuConfig).setOrigin(0.5);
+
+       this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 40, 
+       "But it's a passing through modpack", menuConfig).setOrigin(0.5);
+
        menuConfig.backgroundColor = '#65d9e6';
        menuConfig.color = '#000';
        this.add.text(game.config.width/2, game.config.height/2, 
        'Use <--> arrows to move & (F) to fire', menuConfig).setOrigin(0.5);
 
-       this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding + 50, 
-       'Press <- for Novice or -> for Expert or', menuConfig).setOrigin(0.5);
-       this.add.text(game.config.width/2, game.config.height/2 + borderUISize + (5*borderPadding) +50 , 
-       'DOWN for 2p Novice or UP for 2p Expert', menuConfig).setOrigin(0.5);
+
 
        //Define Keys
        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+
        //
 
       
@@ -58,6 +60,7 @@ class Menu extends Phaser.Scene {
       if (Phaser.Input.Keyboard.JustDown(keyLEFT)){
         //easy mode
         game.settings = {
+          twoPlayer: 0,
           difficulty: 0,
           spaceshipSpeed: 3,
           gameTimer: 60000
@@ -69,6 +72,7 @@ class Menu extends Phaser.Scene {
       if (Phaser.Input.Keyboard.JustDown(keyRIGHT)){
         //hard mode
         game.settings = {
+          twoPlayer: 0,
           difficulty: 1,
           spaceshipSpeed: 4,
           gameTimer: 45000
@@ -76,6 +80,8 @@ class Menu extends Phaser.Scene {
         this.sound.play('sfx_select');
         this.scene.start('playScene');
       }
+
+
       
     }
   }
