@@ -13,15 +13,17 @@ class Menu extends Phaser.Scene {
       this.load.audio('boof', './assets/boof.wav');
       this.load.audio('kaboom', './assets/kaboom.wav');
       this.load.audio('poof', './assets/poof.wav');
+      this.load.image('starsFull', './assets/starsFull.png')
     }
 
     create() {
+      this.add.sprite(0,0, 'starsFull').setOrigin(0,0);
       //menu text
       let menuConfig = {
         fontFamily: 'Copperplate',
         fontSize: '28px',
-        backgroundColor: '#ff66a3',
-        color: '#cc0052',
+        backgroundColor: '#DE3163',
+        color: '#ffffff',
         align: 'right',
         padding: {
             top: 5,
@@ -32,15 +34,16 @@ class Menu extends Phaser.Scene {
 
 
        // show menu text
-       this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 
+       this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 100, 
        'ROCKET PATROL', menuConfig).setOrigin(0.5);
+       menuConfig.backgroundColor = '#65d9e6';
+       menuConfig.color = '#000';
        this.add.text(game.config.width/2, game.config.height/2, 
        'Use <--> arrows to move & (F) to fire', menuConfig).setOrigin(0.5);
-       menuConfig.backgroundColor = '#00ffff';
-       menuConfig.color = '#000';
-       this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 
+
+       this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding + 50, 
        'Press <- for Novice or -> for Expert or', menuConfig).setOrigin(0.5);
-       this.add.text(game.config.width/2, game.config.height/2 + borderUISize + (5*borderPadding), 
+       this.add.text(game.config.width/2, game.config.height/2 + borderUISize + (5*borderPadding) +50 , 
        'DOWN for 2p Novice or UP for 2p Expert', menuConfig).setOrigin(0.5);
 
        //Define Keys
