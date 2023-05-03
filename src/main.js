@@ -1,7 +1,7 @@
 /***************************************************************************
  * Name: William Chen
  * Mod Title: Rocket Patrol, But It's a Passing Through Modpack
- * Time it Took: 8 Hours
+ * Time it Took: 8 Hours and 20 minutes
  * Mods I Chose:
  * [COMPLETE]Track High Score(5pts) (30min)
  * [COMPLETE]Fire UI, it shows FIRE on UI when rocket is in play, Disapers when rocket at start(5pts) (30min)
@@ -14,6 +14,7 @@
  * [COMPLETE]Create New Title Screen(e.g new artwork, typography, layout) (10pts) (45 Min)
  * [COMPLETE]Create new enemy Spaceship type, new art, smaller, faster, worth more points (15pts) (90 Min)
  * [COMPLETE]Implement a new timing/scoring mechanism that adds time to the clock for successful hits on top ship(15pts) (90 Min)
+ * [COMPLETE] Implement paraalax scrolling (10pts) (20 Min)
  * 
  * 
  * 
@@ -26,6 +27,8 @@
  * Music by <a href="https://pixabay.com/users/penguinmusic-24940186/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=14194">penguinmusic</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=14194">Pixabay</a> 
  * Music resource https://rexrainbow.github.io/phaser3-rex-notes/docs/site/audio/
  * random in javascript https://www.w3schools.com/jsref/jsref_random.asp
+ * parralax sroclling https://www.joshmorony.com/how-to-create-a-parallax-background-in-phaser/
+ * 
  * 
  * 
  * 
@@ -50,4 +53,3 @@ let keyF, keyR, keyLEFT, keyRIGHT, keyDOWN, keyUP; //set Down to be 2p novice, s
 
 //reserve highscore vars
 let hScore=0;
-

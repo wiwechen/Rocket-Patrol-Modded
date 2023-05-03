@@ -11,17 +11,25 @@ class Play extends Phaser.Scene{
         this.load.image('magenta', './assets/magenta_ship.png')
         this.load.image('starsBlack', './assets/starsBlack.png')
         this.load.image('starsWhite', './assets/starsWhite.png')
+        this.load.image('purple', './assets/purple.png');
+        this.load.image('whiteStars', './assets/whiteStars.png');
+        this.load.image('blackStars', './assets/blackStars.png');
+        
         
 
     }
 
     create(){
-        //place tile sprite
+        /*place tile sprite
         if(game.settings.difficulty == 0){
             this.starfield=this.add.tileSprite(0,0,640,480,'starsWhite').setOrigin(0,0);
         }else{
             this.starfield=this.add.tileSprite(0,0,640,480,'starsBlack').setOrigin(0,0);
         }
+        */
+        this.purple=this.add.tileSprite(0,0,640, 480, 'purple').setOrigin(0,0);
+        this.blackStars=this.add.tileSprite(0,0, 640, 480, 'blackStars').setOrigin(0,0);
+        this.whiteStars=this.add.tileSprite(0,0, 640, 480, 'whiteStars').setOrigin(0,0);
         //purple UI background
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x330080).setOrigin(0,0);
         // white borders
@@ -177,7 +185,10 @@ class Play extends Phaser.Scene{
         }
 
 
-        this.starfield.tilePositionX -= 4;
+        
+        this.whiteStars.tilePositionX -= -1;
+        this.blackStars.tilePositionX -= -2;
+
         if (!this.gameOver){
             this.p1Rocket.update();
             this.ship01.update();
